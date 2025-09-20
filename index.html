@@ -7,8 +7,10 @@
     <link rel="icon" href="./assets/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/font/font-awesome-pro-v6-6.2.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
 </head>
-<body>
+<body style="height: 100000px;">
     <header>
         <div class="header-middle">
             <div class="container">
@@ -57,13 +59,13 @@
         <div class="container">
             <ul class="menu-list">
                 <li class="menu-list-item"><a href="" class="menu-link">Trang chủ</a></li>
-                <li class="menu-list-item"><a href="javascript:;">Món chay</a></li>
-                <li class="menu-list-item"><a href="javascript:;"></a>Món mặn</li>
-                <li class="menu-list-item"><a href="javascript:;"></a>Món lẩu</li>
-                <li class="menu-list-item"><a href="javascript:;"></a>Món ăn vặt</li>
-                <li class="menu-list-item"><a href="javascript:;"></a>Món tráng miệng</li>
-                <li class="menu-list-item"><a href="javascript:;"></a>Nước uống</li>
-                <li class="menu-list-item"><a href="javascript:;"></a>Món khác</li>
+                <li class="menu-list-item"><a href="javascript:;" class="menu-link">Món chay</a></li>
+                <li class="menu-list-item"><a href="javascript:;" class="menu-link">Món mặn </a></li>
+                <li class="menu-list-item"><a href="javascript:;" class="menu-link">Món lẩu </a></li>
+                <li class="menu-list-item"><a href="javascript:;" class="menu-link">Món ăn vặt </a></li>
+                <li class="menu-list-item"><a href="javascript:;" class="menu-link">Món tráng miệng </a></li>
+                <li class="menu-list-item"><a href="javascript:;" class="menu-link">Nước uống </a></li>
+                <li class="menu-list-item"><a href="javascript:;" class="menu-link">Món khác </a></li>
             </ul>
         </div>
     </nav>
@@ -73,31 +75,116 @@
             <div class="advanced-search-category">
                 <span>Phân loại</span>
                 <select name="" id="advanced-search-category-select">
-                    <option value="">Tất cả</option>
-                    <option value="">Món chay</option>
-                    <option value="">Món mặn</option>
-                    <option value="">Món lẩu</option>
-                    <option value="">Món ăn vặt</option>
-                    <option value="">Món tráng miệng</option>
-                    <option value="">Nước uống</option>
+                    <option>Tất cả</option>
+                    <option>Món chay</option>
+                    <option>Món mặn</option>
+                    <option>Món lẩu</option>
+                    <option>Món ăn vặt</option>
+                    <option>Món tráng miệng</option>
+                    <option>Nước uống</option>
                 </select>
+            </div> 
+            <div class="advanced-search-price">
+                <span>Giá từ</span>
+                <input type="number" placeholder="Tối thiểu" id="min-price">
+                <span>Đến</span>
+                <input type="number" placeholder="Tối đa" id="max-price"> 
+                <button id="advanced-search-price-btn"><i class="fa-regular fa-magnifying-glass-dollar"></i></button>
+            </div>
 
-                <div class="advanced-search-price">
-                    <span>Giá từ</span>
-                    <input type="number" placeholder="Tối thiểu" id="min-price">
-                    <span>Đến</span>
-                    <input type="number" placeholder="Tối đa" id="max-price"> 
-                    <button id="advanced-search-price-btn"><i class="fa-regular fa-magnifying-glass-dollar"></i></button>
-                </div>
-
-                <div class="advanced-search-control">
-                    <button><i class="fa-regular fa-arrow-up-short-wide"></i></button>
-                    <button><i class="fa-regular fa-arrow-down-wide-short"></i></button>
-                    <button><i class="fa-light fa-arrow-rotate-right"></i></button>
-                    <button><i class="fa-light fa-xmark"></i></button>
-                </div>
+            <div class="advanced-search-control">
+                <button><i class="fa-regular fa-arrow-up-short-wide"></i></button>
+                <button><i class="fa-regular fa-arrow-down-wide-short"></i></button>
+                <button><i class="fa-light fa-arrow-rotate-right"></i></button>
+                <button><i class="fa-light fa-xmark"></i></button>
             </div>
         </div>
     </div>
+
+    <main class="main-wrapper">
+        <div class="container" id="trangchu">
+            <div class="swiper">
+                <div class="home-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="./assets/img/banner-1.png" alt=""></div>
+                        <div class="swiper-slide"><img src="./assets/img/banner-2.png" alt=""></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            
+            <div class="home-service" id="home-service">
+                <div class="home-service-item">
+                    <div class="home-service-item-icon">
+                        <i class="fa-regular fa-person-carry-box"></i>
+                    </div>
+                    <div class="home-service-item-content">
+                        <h4 class="home-service-item-content-h">GIAO HÀNG NHANH</h4>
+                        <p class="home-service-item-content-desc">Cho tất cả đơn hàng</p>
+                    </div>
+                </div>
+                <div class="home-service-item">
+                    <div class="home-service-item-icon">
+                        <i class="fa-regular fa-shield-heart"></i>
+                    </div>
+                    <div class="home-service-item-content">
+                        <h4 class="home-service-item-content-h">SẢN PHẨM AN TOÀN</h4>
+                        <p class="home-service-item-content-desc">Cam kết chất lượng</p>
+                    </div>
+                </div>
+                <div class="home-service-item">
+                    <div class="home-service-item-icon">
+                        <i class="fa-regular fa-headset"></i>
+                    </div>
+                    <div class="home-service-item-content">
+                        <h4 class="home-service-item-content-h">HỖ TRỢ 24/7</h4>
+                        <p class="home-service-item-content-desc">Tất cả ngày trong tuần</p>
+                    </div>
+                </div>
+                <div class="home-service-item">
+                    <div class="home-service-item-icon">
+                        <i class="fa-regular fa-circle-dollar"></i>
+                    </div>
+                    <div class="home-service-item-content">
+                        <h4 class="home-service-item-content-h">HOÀN LẠI TIỀN</h4>
+                        <p class="home-service-item-content-desc">Cho tất cả đơn hàng</p>
+                    </div>
+                </div>
+            </div>
+            <div class="home-title-block" id="home-title">
+                <h2 class="home-title">Khám phá thực đơn của chúng tôi</h2>
+            </div>
+            <div class="home-products" id="home-products">
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-top-content">
+                    <div class="footer-top-img">
+                        <img src="./assets/img/naq.png" alt="">
+                    </div>
+                    <div class="footer-top-subbox">
+                        <div class="footer-top-subs">
+                            <h2 class="footer-top-subs-title">Đăng ký nhận tin</h2>
+                            <p class="footer-top-subs-text">Nhận thông tin mới nhất từ chúng tôi</p>
+                        </div>
+                        <form class="form-ground">
+                            <input type="email" class="form-ground-input" placeholder="Nhập email của bạn">
+                            <button class="form-ground-btn">
+                                <span>ĐĂNG KÝ</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Link Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>
