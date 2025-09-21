@@ -11,3 +11,7 @@ const swiper = new Swiper('.home-slider', {
     },
 });
 
+// Render Product
+function renderProducts(showProduct) {
+    
+}
