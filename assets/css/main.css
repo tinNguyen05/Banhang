@@ -75,6 +75,19 @@ body, input, button, textarea, pre {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+::-webkit-scrollbar {
+  width: 5px;               
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;     
+}
+::-webkit-scrollbar-thumb {
+  background: #888;         
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;         
+}
 /* ================= LAYOUT ================= */
 .container {
     max-width: 1130px;
@@ -669,3 +682,173 @@ header {
     align-items: center;
     justify-content: center;
 }
+
+/* ================= MODAL ================= */
+.modal {
+    background-color: rgba(0, 0, 0, .6);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 16;
+}
+
+
+/* ================= LOGIN - SIGNUP ================= */
+.modal.signup-login.open {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.modal.signup-login .modal-container {
+    overflow: hidden;
+}
+.modal.signup-login.open .modal-container{
+    transform: scale(1);
+}
+
+.modal-container {
+    background-color: var(--white);
+    max-height: calc(100vh - 60px);
+    box-shadow: 0px 4px 30px rgb(0 0 0 / 25%);
+    border-radius: 5px;
+    overflow: hidden;
+    overflow-y: scroll;
+    overflow-y: overlay;
+    position: relative;
+    transform: scale(0.8);
+    transition: 0.3s ease;
+    width: 380px;
+}
+
+.modal-container .forms {
+    width: 200%;
+    display: flex;
+    align-items: center;
+}
+
+.modal-container.active .forms {
+    height: 375px;
+}
+
+.modal-container.active .sign-up {
+    margin-left: -50%;
+}
+
+/* --- Form - Login Signup --- */
+.form-content {
+    padding: 20px;
+    width: 50%;
+}
+
+.form-title {
+    text-align: center;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+.form-description {
+    text-align: center;
+    color: #808080;
+    font-size: 14px;
+}
+
+.login-form,
+.signup-form {
+    margin-top: 15px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-label {
+    margin-bottom: 5px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-control {
+    width: 100%;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    outline: none;
+    transition: border 0.3s linear;
+}
+
+.form-control.error {
+    border-color: var(--blue);
+}
+
+.form-control:focus {
+    border-color: var(--blue);
+}
+
+.form-message {
+    color: var(--blue);
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.form-submit {
+    width: 100%;
+    height: 40px;
+    outline: none;
+    border: none;
+    color: var(--white);
+    background-color: var(--blue);
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.form-submit:hover {
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+}
+
+.form-close {
+    background-color: rgba(0, 0, 0, .3);
+    height: 30px;
+    width: 30px;
+    line-height: 29px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 2;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    color: var(--white);
+    cursor: pointer;
+}
+.form-close:hover {
+    background-color: var(--blue);
+}
+.checkbox {
+    transform: scale(1.25);
+}
+.change-login {
+    padding-top: 15px;
+    text-align: center;
+    font-size: 16px;
+}
+.change-login a, 
+.form-group label a {
+    color: var(--blue);
+}
+.change-login a:hover,
+.form-group label a:hover {
+    color: var(--text-color);
+}
+

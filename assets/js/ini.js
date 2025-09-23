@@ -566,3 +566,4 @@ function createProduct() {
 }
 
 window.onload = createProduct();
+
