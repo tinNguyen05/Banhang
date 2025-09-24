@@ -3,6 +3,7 @@
 const body = document.querySelector("body");
 let modalContainer = document.querySelectorAll(".modal");
 let modalBox = document.querySelectorAll('.mdl-cnt');
+let checkBox = document.getElementById("checkbox-signup");
 
 function closeModal() {
     modalContainer.forEach(item => {
@@ -29,6 +30,18 @@ function resetForm() {
     document.getElementById("password").value = "";
     document.getElementById("password_confirmation").value = "";
     document.getElementById("checkbox-signup").checked = false;
+
+    document.querySelector(".form-message-name").innerHTML = "";
+    document.querySelector(".form-message-phone").innerHTML = "";
+    document.querySelector(".form-message-password").innerHTML = "";
+    document.querySelector(".form-message-password-confi").innerHTML = "";
+    document.querySelector('.form-message-checkbox').innerHTML = '';
+
+    document.getElementById("phone-login").value = "";
+    document.getElementById("password-login").value = "";
+
+    document.querySelector(".phonelog").innerHTML = "";
+    document.querySelector(".form-message-check-login").innerHTML = "";
 }
 
 // ----------------------HEADER--------------------------------
@@ -108,7 +121,7 @@ signupButton.addEventListener("click", (e) => {
         document.querySelector('.form-message-password').innerHTML = 'Vui lòng nhập mật khẩu lớn hơn 6 kí tự';
         document.getElementById('password').value = '';
     } else {
-        document.querySelector('.form-message-password').innerHTML = "Mật khẩu không khớp";
+        document.querySelector('.form-message-password').innerHTML = "";
     } 
 
     if(password_confirmation.length == 0) {
@@ -121,13 +134,14 @@ signupButton.addEventListener("click", (e) => {
     }
 
     if(checkbox != true) {
-        document.querySelector(".form-message-checkbox").innerHTML = "Vui lòng check đăng ký";
+       document.querySelector('.form-message-checkbox').innerHTML = 'Vui lòng check đăng ký';
     } else {
         document.querySelector('.form-message-checkbox').innerHTML = '';
     }
 
     if(fullNameUser && phoneUser && passwordUser && password_confirmation && checkbox) {
-        let user = {
+        
+            let user = {
             fullname: fullNameUser,
             phone: phoneUser,
             password: passwordUser,
@@ -137,21 +151,58 @@ signupButton.addEventListener("click", (e) => {
             join: new Date(),
             cart: [],
             userType: 0
-        }
+            }
+            let accounts = localStorage.getItem("accounts") ? JSON.parse(localStorage.getItem("accounts")) : [];
+            let checkloop = accounts.some(account => {
+                return account.phone == user.phone;
+            })
 
-        let accounts = localStorage.getItem("accounts") ? JSON.parse(localStorage.getItem("accounts")) : [];
-        let checkloop = accounts.some(account => {
-            return account.phone == user.phone;
-        })
+            if(!checkloop) {
+                accounts.push(user);
+                localStorage.setItem("accounts", JSON.stringify(accounts));
+                localStorage.setItem("currentuser", JSON.stringify(user));
+                closeModal();
+            }
+    
+    }
+})
 
-        if(!checkloop) {
-            accounts.push(user);
-            localStorage.setItem("accounts", JSON.stringify(accounts));
-            localStorage.setItem("currentuser", JSON.stringify(user));
+// Chức năng đăng nhập
+loginButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    let phonelog = document.getElementById("phone-login").value;
+    let passlog = document.getElementById("password-login").value;
+    let accounts = JSON.parse(localStorage.getItem("accounts"));
+
+    if (phonelog.length == 0) {
+        document.querySelector('.form-message.phonelog').innerHTML = 'Vui lòng nhập vào số điện thoại';
+    } else if (phonelog.length != 10) {
+        document.querySelector('.form-message.phonelog').innerHTML = 'Vui lòng nhập vào số điện thoại 10 số';
+        document.getElementById('phone-login').value = '';
+    } else {
+        document.querySelector('.form-message.phonelog').innerHTML = '';
+    }
+
+    if (passlog.length == 0) {
+        document.querySelector('.form-message-check-login').innerHTML = 'Vui lòng nhập mật khẩu';
+    } else if (passlog.length < 6) {
+        document.querySelector('.form-message-check-login').innerHTML = 'Vui lòng nhập mật khẩu lớn hơn 6 kí tự';
+        document.getElementById('passwordlogin').value = '';
+    } else {
+        document.querySelector('.form-message-check-login').innerHTML = '';
+    }
+
+    if(phonelog && passlog) {
+        let index = accounts.findIndex(item => item.phone == phonelog);
+        if(phoneCheck == -1) {
+
+        }else {
+            localStorage.setItem("currentuser", JSON.stringify(accounts[index]));
             closeModal();
         }
     }
 })
+
 
 const swiper = new Swiper('.home-slider', {
     loop: true,
@@ -166,26 +217,5 @@ const swiper = new Swiper('.home-slider', {
     },
 });
 
-// Hàm render sản phẩm
-function renderProducts(showProduct) {
-    let productHtml ='';
-    if(showProduct.length == 0) {
-        document.getElementById("home-title").style.display = "none";
-
-    }else {
-        document.getElementById("home-title").style.display = "block";
-    }
-}
-
-// Gọi khi load trang
-document.addEventListener("DOMContentLoaded", function() {
-    // tạo sẵn sản phẩm nếu chưa có
-    if (!localStorage.getItem("products")) {
-        createProduct(); 
-    }
-
-    let products = JSON.parse(localStorage.getItem("products"));
-    renderProducts(products);
-});
 
 

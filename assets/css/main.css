@@ -786,10 +786,6 @@ header {
     transition: border 0.3s linear;
 }
 
-.form-control.error {
-    border-color: var(--blue);
-}
-
 .form-control:focus {
     border-color: var(--blue);
 }
@@ -838,6 +834,7 @@ header {
 .checkbox {
     transform: scale(1.25);
 }
+
 .change-login {
     padding-top: 15px;
     text-align: center;
@@ -852,3 +849,77 @@ header {
     color: var(--text-color);
 }
 
+.form-message {
+    color: var(--blue);
+    font-style: 13px;
+    margin-top: 10px;
+}
+
+
+/* --- Form - Cart --- */
+.modal-cart {
+    background-color: rgb(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.modal-cart.open {
+    visibility: visible;
+}
+.cart-container {
+    overflow: hidden;
+    background-color: var(--white);
+    width: 400px;
+    height: calc(100% - 30px);
+    right: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 66px;
+    padding-bottom: 119px;
+}
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--white);
+}
+.cart-close {
+    background-color: rgba(0, 0, 0, .3);
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    color: var(--white);
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    
+}
+.cart-close:hover {
+    background-color: var(--blue);
+}
+.cart-body {
+    flex-grow: 1;
+    padding: 10px 20px;
+    overflow: auto;
+}
+.gio-hang-trong {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+.gio-hang-trong i {
+    font-style: 70px;
+}
+.gio-hang-trong p {
+    font-size: 14px;
+    margin-top: 20px;
+}
