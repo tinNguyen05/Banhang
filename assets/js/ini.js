@@ -608,5 +608,31 @@ function createProduct() {
         localStorage.setItem('products', JSON.stringify(products));
     }
 }
-window.onload = createProduct;
+
+// Create admin account 
+function createAdminAccount() {
+    let accounts = localStorage.getItem("accounts");
+    if (!accounts) {
+        accounts = [];
+        accounts.push({
+            fullname: "Nguyễn Bá Trọng Tín",
+            phone: "0867461105",
+            password: "123123",
+            address: 'https://github.com/tinNguyen05',
+            email: 'trongtin.work1120@gmail.com',
+            status: 1,
+            join: new Date(),
+            cart: [],
+            userType: 1
+        })
+        localStorage.setItem('accounts', JSON.stringify(accounts));
+    }
+}
+
+
+window.addEventListener("load", () => {
+    createProduct();
+    createAdminAccount();
+})
+
 
